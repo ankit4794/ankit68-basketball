@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANKIT68° — Elite Street Basketball Training</title>
+<meta name="description" content="ANKIT68° is a street-basketball training program — youth development, elite coaching, and game-ready conditioning.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon-900:#38000a;
+    --red-700:#9b1313;
+    --red-500:#cd1c18;
+    --peach-300:#ffa896;
+    --bg:#fff8f6;
+    --bg-2:#ffe4dc;
+    --ink:#2a0a0c;
+    --muted:#7a5a58;
+    --radius:20px;
+    --max:1180px;
+    --shadow: 0 20px 50px -20px rgba(56,0,10,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:'Poppins',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;letter-spacing:-0.01em;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 28px;border-radius:999px;font-weight:700;font-size:15px;
+    border:1px solid transparent;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{background:var(--red-500);color:#fff;box-shadow:0 12px 24px -10px rgba(205,28,24,.55)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 30px -10px rgba(205,28,24,.6)}
+  .btn-ghost{background:transparent;border-color:rgba(56,0,10,.18);color:var(--maroon-900)}
+  .btn-ghost:hover{background:rgba(56,0,10,.06)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--red-700);
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red-500)}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,248,246,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(56,0,10,.08);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;color:var(--maroon-900);letter-spacing:-0.02em}
+  .brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--red-700),var(--maroon-900));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
+  nav.links{display:flex;gap:30px;font-weight:600;font-size:15px}
+  nav.links a{opacity:.8;transition:opacity .2s}
+  nav.links a:hover{opacity:1}
+  .nav-actions{display:flex;align-items:center;gap:14px}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--maroon-900)}
+
+  .hero{position:relative;overflow:hidden;padding:90px 0 70px}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero h1{font-size:clamp(38px,5.2vw,66px);font-weight:800;line-height:1.02;color:var(--maroon-900);text-transform:uppercase}
+  .hero h1 em{font-style:normal;color:var(--red-500)}
+  .hero p.lead{margin-top:22px;font-size:18px;color:var(--muted);max-width:480px}
+  .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:36px;margin-top:46px}
+  .hero-stats div b{display:block;font-size:28px;font-weight:800;color:var(--maroon-900)}
+  .hero-stats div span{font-size:13px;color:var(--muted)}
+  .hero-visual{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+  .hero-visual canvas{width:100%!important;height:100%!important;touch-action:none}
+  .hero-visual .glow{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle, rgba(205,28,24,.18), transparent 70%);filter:blur(10px);z-index:-1}
+  .hero-visual .badge{
+    position:absolute;bottom:6%;left:50%;transform:translateX(-50%);
+    background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
+    border-radius:999px;padding:10px 20px;display:flex;align-items:center;gap:10px;
+    box-shadow:0 10px 30px -10px rgba(56,0,10,.3);font-size:13px;font-weight:700;
+  }
+  .hero-visual .badge .dot2{width:8px;height:8px;border-radius:50%;background:var(--red-500);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  section{padding:90px 0}
+  .section-head{max-width:600px;margin-bottom:52px}
+  .section-head h2{font-size:clamp(28px,3.4vw,42px);font-weight:800;margin-top:14px;color:var(--maroon-900);text-transform:uppercase}
+  .section-head p{margin-top:14px;color:var(--muted);font-size:16px}
+
+  .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .program-card{
+    background:#fff;border-radius:var(--radius);padding:32px 28px;border:1px solid rgba(56,0,10,.06);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .program-card .icon{width:52px;height:52px;border-radius:14px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--red-700);font-size:22px}
+  .program-card h3{font-size:19px;font-weight:700;margin-bottom:10px}
+  .program-card p{font-size:14.5px;color:var(--muted)}
+
+  .process-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:step}
+  .process-track::before{content:"";position:absolute;top:26px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(to right,rgba(56,0,10,.18) 0 8px,transparent 8px 16px);z-index:0}
+  .process-step{position:relative;z-index:1;text-align:center;padding:0 6px}
+  .process-step .step-num{width:52px;height:52px;margin:0 auto 18px;border-radius:50%;background:var(--maroon-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;box-shadow:0 10px 22px -8px rgba(56,0,10,.5)}
+  .process-step h3{font-size:16px;font-weight:700;margin-bottom:8px}
+  .process-step p{font-size:13.5px;color:var(--muted)}
+
+  .facility-section{background:var(--bg-2)}
+  .facility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .facility-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:center;border:1px solid rgba(56,0,10,.06)}
+  .facility-card .icon{width:46px;height:46px;margin:0 auto 14px;border-radius:12px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--red-700)}
+  .facility-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+  .facility-card p{font-size:13px;color:var(--muted)}
+
+  .why{background:var(--maroon-900);color:#fff;border-radius:32px;margin:0 24px;padding:70px 50px}
+  .why .wrap{max-width:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .why h2{color:#fff;font-size:clamp(26px,3vw,38px);font-weight:800;text-transform:uppercase}
+  .why-list{display:grid;gap:22px;margin-top:28px}
+  .why-list li{display:flex;gap:14px;list-style:none;font-size:15px;color:rgba(255,255,255,.85)}
+  .why-list li b{color:#fff;display:block;font-size:15.5px;margin-bottom:2px}
+  .why-list .num{flex:none;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--peach-300)}
+  .why-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .why-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px}
+  .why-stat b{display:block;font-size:32px;font-weight:800;color:var(--peach-300)}
+  .why-stat span{font-size:13px;color:rgba(255,255,255,.7)}
+
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .team-card{text-align:center}
+  .team-photo{aspect-ratio:1;border-radius:18px;background:linear-gradient(160deg,var(--peach-300),var(--red-700));margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:30px}
+  .team-card h3{font-size:16px;font-weight:700;margin-bottom:3px}
+  .team-card span{font-size:13px;color:var(--muted)}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .price-card{background:#fff;border:1px solid rgba(56,0,10,.08);border-radius:var(--radius);padding:32px 28px;position:relative}
+  .price-card.featured{border-color:var(--red-500);box-shadow:var(--shadow)}
+  .price-card .tag{position:absolute;top:-13px;left:28px;background:var(--red-700);color:#fff;font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.03em}
+  .price-card h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .price-card .amount{font-size:32px;font-weight:800;color:var(--maroon-900);margin:10px 0}
+  .price-card .amount span{font-size:14px;color:var(--muted);font-weight:400}
+  .price-card ul{list-style:none;display:grid;gap:10px;margin-top:18px;font-size:14px;color:var(--muted)}
+  .price-card ul li::before{content:"✓ ";color:var(--red-700);font-weight:700}
+
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .testi-card{background:var(--bg-2);border-radius:var(--radius);padding:30px}
+  .stars{color:#8a5f14;font-size:15px;margin-bottom:14px;letter-spacing:2px}
+  .testi-card p{font-size:15px;color:var(--ink);margin-bottom:20px}
+  .testi-person{display:flex;align-items:center;gap:12px}
+  .testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--red-700);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .testi-person b{font-size:14px;display:block}
+  .testi-person span{font-size:12.5px;color:var(--muted)}
+
+  .faq-list{display:grid;gap:14px;max-width:760px;margin:0 auto}
+  .faq-item{background:#fff;border:1px solid rgba(56,0,10,.08);border-radius:16px;overflow:hidden}
+  .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;background:none;border:none;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--maroon-900);cursor:pointer}
+  .faq-q .plus{flex:none;font-size:20px;color:var(--red-500);transition:transform .3s ease}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{padding:0 24px 20px;font-size:14.5px;color:var(--muted)}
+
+  .join{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .join .info h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--maroon-900);text-transform:uppercase}
+  .join .info p{margin-top:16px;color:var(--muted)}
+  .info-row{display:flex;gap:14px;margin-top:22px;align-items:flex-start}
+  .info-row .icon{width:40px;height:40px;border-radius:10px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;color:var(--red-700);flex:none}
+  .info-row b{display:block;font-size:14.5px}
+  .info-row span{font-size:13.5px;color:var(--muted)}
+  form.card{background:#fff;border-radius:var(--radius);padding:34px;border:1px solid rgba(56,0,10,.08);box-shadow:var(--shadow)}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--maroon-900)}
+  .field input,.field select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(56,0,10,.15);font:inherit;background:var(--bg);color:var(--ink)}
+  .field input:focus,.field select:focus{outline:2px solid var(--red-500);outline-offset:1px}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-note{font-size:12px;color:var(--muted);margin-top:10px}
+  .success-msg{display:none;margin-top:14px;background:#e8f6ee;color:#166534;padding:12px 14px;border-radius:10px;font-size:14px;font-weight:600}
+  .success-msg.show{display:block}
+
+  footer{background:var(--maroon-900);color:rgba(255,255,255,.75);padding:60px 0 30px;margin-top:40px}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+  .footer-grid h4{color:#fff;font-size:14px;margin-bottom:16px}
+  .footer-grid ul{list-style:none;display:grid;gap:10px;font-size:14px}
+  .footer-bottom{margin-top:50px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:10px}
+
+  [data-reveal]{opacity:0;transform:translateY(24px)}
+  [data-reveal].in{opacity:1;transform:translateY(0)}
+
+  @media (max-width:900px){
+    nav.links{display:none}
+    .nav-toggle{display:block}
+    .nav{padding:14px 18px}
+    .brand{font-size:16px;white-space:nowrap}
+    .nav-actions .btn-primary{padding:10px 16px;font-size:13.5px;white-space:nowrap}
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-visual{order:-1;max-width:380px;margin:0 auto}
+    .programs-grid,.testi-grid{grid-template-columns:1fr}
+    .why .wrap{grid-template-columns:1fr}
+    .why{margin:0 12px;padding:44px 24px}
+    .join{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .row-2{grid-template-columns:1fr}
+    .process-track{grid-template-columns:1fr;gap:28px}
+    .process-track::before{display:none}
+    .facility-grid{grid-template-columns:1fr 1fr}
+    .team-grid{grid-template-columns:1fr 1fr}
+    .pricing-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#top" class="brand"><span class="mark">A</span>ANKIT68°</a>
+    <nav class="links">
+      <a href="#programs">Programs</a>
+      <a href="#process">Process</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#join" class="btn btn-primary">Join Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="eyebrow">Street Basketball Training</span>
+        <h1>Train like<br><em>it's game day</em></h1>
+        <p class="lead">ANKIT68° builds game-ready players through structured coaching, real repetition, and a facility built for people serious about getting better.</p>
+        <div class="hero-actions">
+          <a href="#join" class="btn btn-primary">Book a trial session</a>
+          <a href="#programs" class="btn btn-ghost">See programs</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>9+</b><span>Years coaching</span></div>
+          <div><b>1,200+</b><span>Athletes trained</span></div>
+          <div><b>4.9★</b><span>Parent &amp; player rating</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" data-reveal>
+        <div class="glow"></div>
+        <canvas id="ballCanvas"></canvas>
+        <div class="badge"><span class="dot2"></span>Next session in 2h 15m</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">What we offer</span>
+        <h2>Programs for every level</h2>
+        <p>Every group is small enough that a coach actually knows your name, and your weaknesses.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card" data-reveal><div class="icon">🏀</div><h3>Youth Development</h3><p>Fundamentals-first training for ages 8-13, building habits that stick.</p></div>
+        <div class="program-card" data-reveal><div class="icon">🔥</div><h3>Elite Training</h3><p>High-intensity sessions for competitive players prepping for tryouts.</p></div>
+        <div class="program-card" data-reveal><div class="icon">🎯</div><h3>Shooting Clinic</h3><p>Form correction and volume reps with real-time video feedback.</p></div>
+        <div class="program-card" data-reveal><div class="icon">💪</div><h3>Strength &amp; Conditioning</h3><p>On-court speed and power work built specifically for basketball movement.</p></div>
+        <div class="program-card" data-reveal><div class="icon">🧑‍🏫</div><h3>1-on-1 Coaching</h3><p>Private sessions built entirely around your game and your goals.</p></div>
+        <div class="program-card" data-reveal><div class="icon">☀️</div><h3>Summer Camps</h3><p>Full-day camps mixing skills, scrimmages, and team competition.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">How it works</span>
+        <h2>From first rep to game ready</h2>
+        <p>A clear path, not a random mix of drills — every athlete moves through the same five stages.</p>
+      </div>
+      <div class="process-track">
+        <div class="process-step" data-reveal><div class="step-num">01</div><h3>Assess</h3><p>A skills evaluation to find your real starting point.</p></div>
+        <div class="process-step" data-reveal><div class="step-num">02</div><h3>Plan</h3><p>A training plan built around your position and goals.</p></div>
+        <div class="process-step" data-reveal><div class="step-num">03</div><h3>Train</h3><p>Structured sessions, tracked reps, real coaching cues.</p></div>
+        <div class="process-step" data-reveal><div class="step-num">04</div><h3>Track</h3><p>Progress checkpoints every 4 weeks, shared with parents.</p></div>
+        <div class="process-step" data-reveal><div class="step-num">05</div><h3>Compete</h3><p>Scrimmages and showcase games to prove it under pressure.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="facility" class="facility-section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Where you train</span>
+        <h2>A facility built for reps</h2>
+        <p>No waiting for a hoop, no cutting sessions short because the gym's booked.</p>
+      </div>
+      <div class="facility-grid">
+        <div class="facility-card" data-reveal><div class="icon">🏟️</div><h3>Full Court</h3><p>Regulation hardwood, open for every session.</p></div>
+        <div class="facility-card" data-reveal><div class="icon">🎥</div><h3>Video Analysis</h3><p>Every drill recorded for form breakdown afterward.</p></div>
+        <div class="facility-card" data-reveal><div class="icon">🤖</div><h3>Shooting Machine</h3><p>Rapid-return passing for high-volume shooting reps.</p></div>
+        <div class="facility-card" data-reveal><div class="icon">🧊</div><h3>Recovery Room</h3><p>Stretching and recovery space built into every session.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-us">
+    <div class="wrap">
+      <div class="why">
+        <div class="wrap">
+          <div data-reveal>
+            <span class="eyebrow" style="color:var(--peach-300)">Why families choose us</span>
+            <h2>Coaching that actually tracks progress</h2>
+            <ul class="why-list">
+              <li><span class="num">01</span><div><b>Small groups</b>Max 8 athletes per coach, every session.</div></li>
+              <li><span class="num">02</span><div><b>Real progress reports</b>Written checkpoints, not vague praise.</div></li>
+              <li><span class="num">03</span><div><b>Flexible scheduling</b>Weekday evenings and weekend blocks available.</div></li>
+            </ul>
+          </div>
+          <div class="why-stats" data-reveal>
+            <div class="why-stat"><b>96%</b><span>Would recommend us</span></div>
+            <div class="why-stat"><b>8:1</b><span>Athlete-to-coach ratio</span></div>
+            <div class="why-stat"><b>4</b><span>Sessions per week available</span></div>
+            <div class="why-stat"><b>12</b><span>Alumni playing college ball</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coaches">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Meet the coaches</span>
+        <h2>Coached by people who've played</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card" data-reveal><div class="team-photo">R</div><h3>Coach Rahul Verma</h3><span>Head Coach, Elite</span></div>
+        <div class="team-card" data-reveal><div class="team-photo">S</div><h3>Coach Simran Kaur</h3><span>Youth Development</span></div>
+        <div class="team-card" data-reveal><div class="team-photo">D</div><h3>Coach Dev Malhotra</h3><span>Shooting Specialist</span></div>
+        <div class="team-card" data-reveal><div class="team-photo">N</div><h3>Coach Neha Kapoor</h3><span>Strength &amp; Conditioning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="facility-section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Plans</span>
+        <h2>Straightforward pricing</h2>
+        <p>No hidden equipment fees — everything you need is on-site.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card" data-reveal>
+          <h3>Drop-In</h3>
+          <div class="amount">$35<span> / session</span></div>
+          <ul><li>Single group session</li><li>Access to open gym hours</li><li>No commitment required</li></ul>
+        </div>
+        <div class="price-card featured" data-reveal>
+          <span class="tag">Most popular</span>
+          <h3>Monthly Squad</h3>
+          <div class="amount">$219<span> / month</span></div>
+          <ul><li>3 sessions per week</li><li>Progress report every 4 weeks</li><li>Priority camp registration</li></ul>
+        </div>
+        <div class="price-card" data-reveal>
+          <h3>1-on-1 Private</h3>
+          <div class="amount">Custom<span> quote</span></div>
+          <ul><li>Fully personalized plan</li><li>Flexible scheduling</li><li>Video breakdown included</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Player stories</span>
+        <h2>What athletes and parents say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"My son's shooting form completely changed in six weeks. The video feedback made the difference."</p>
+          <div class="testi-person"><div class="testi-avatar">A</div><div><b>Anil Sharma</b><span>Parent</span></div></div>
+        </div>
+        <div class="testi-card" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"Small groups meant the coach actually corrected me instead of just running drills."</p>
+          <div class="testi-person"><div class="testi-avatar">P</div><div><b>Priya Nair</b><span>Elite program</span></div></div>
+        </div>
+        <div class="testi-card" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"Made varsity this year. The summer camp scrimmages were exactly the pressure I needed."</p>
+          <div class="testi-person"><div class="testi-avatar">K</div><div><b>Karan Mehta</b><span>Youth program</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" data-reveal>
+          <button class="faq-q"><span>What age groups do you train?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>Youth Development starts at age 8. Elite Training and 1-on-1 coaching are open to any age with prior playing experience.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <button class="faq-q"><span>Do I need my own equipment?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>No — court, balls, and shooting machines are all on-site. Just bring court shoes and water.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <button class="faq-q"><span>Can I try a session before committing?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — every new athlete gets one trial session before choosing a plan.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <button class="faq-q"><span>Do you help with college recruiting?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>Our Elite program includes highlight reel support and introductions through our alumni network.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap join">
+      <div class="info" data-reveal>
+        <span class="eyebrow">Get started</span>
+        <h2>Book your trial session</h2>
+        <p>Tell us a bit about the athlete and we'll follow up with available times. This is a demo form — no data leaves your browser.</p>
+        <div class="info-row"><div class="icon">📍</div><div><b>Train with us</b><span>456 Example Court, Your City (placeholder address)</span></div></div>
+        <div class="info-row"><div class="icon">📞</div><div><b>Call the front desk</b><span>+1 (555) 020-0000 (placeholder number)</span></div></div>
+        <div class="info-row"><div class="icon">✉️</div><div><b>Email us</b><span>hello@ankit68.example</span></div></div>
+      </div>
+      <form class="card" id="joinForm">
+        <div class="row-2">
+          <div class="field"><label>Athlete name</label><input type="text" required placeholder="Jordan Lee"></div>
+          <div class="field"><label>Age</label><input type="number" required min="6" max="99" placeholder="12"></div>
+        </div>
+        <div class="field"><label>Parent/guardian email</label><input type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label>Interested program</label>
+          <select>
+            <option>Youth Development</option>
+            <option>Elite Training</option>
+            <option>Shooting Clinic</option>
+            <option>1-on-1 Coaching</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request trial session</button>
+        <p class="form-note">This form is a front-end demo — submissions are not sent anywhere.</p>
+        <div class="success-msg" id="successMsg">Thanks! This demo form doesn't send data anywhere, but on a live site we'd follow up within one business day with open times.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="brand" style="color:#fff"><span class="mark">A</span>ANKIT68°</a>
+        <p style="margin-top:14px;font-size:14px;max-width:280px">Street basketball training built around real coaching and real repetition.</p>
+      </div>
+      <div>
+        <h4>Training</h4>
+        <ul><li><a href="#programs">Programs</a></li><li><a href="#process">Process</a></li><li><a href="#coaches">Coaches</a></li></ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul><li><a href="#join">Book a trial</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ANKIT68°. All rights reserved.</span>
+      <span>Demo site — all contact details are placeholders.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+  import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@11.15.0/+esm";
+
+  // ---- procedural basketball (no external model/textures — fully original) ----
+  function makeBasketballTexture() {
+    const size = 1024;
+    const c = document.createElement('canvas');
+    c.width = size; c.height = size / 2 === 0 ? size : size; c.height = size;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#cd1c18';
+    ctx.fillRect(0, 0, size, size);
+    // subtle radial shading for a leathery feel
+    const grad = ctx.createRadialGradient(size*0.4, size*0.35, size*0.05, size*0.5, size*0.5, size*0.75);
+    grad.addColorStop(0, 'rgba(255,168,150,0.25)');
+    grad.addColorStop(1, 'rgba(56,0,10,0.25)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    // seams
+    ctx.strokeStyle = '#1a0004';
+    ctx.lineWidth = size * 0.014;
+    ctx.lineCap = 'round';
+    // vertical seam
+    ctx.beginPath(); ctx.moveTo(size/2, 0); ctx.lineTo(size/2, size); ctx.stroke();
+    // horizontal seam
+    ctx.beginPath(); ctx.moveTo(0, size/2); ctx.lineTo(size, size/2); ctx.stroke();
+    // two vertical arcs (curved panel seams)
+    ctx.beginPath(); ctx.ellipse(size/2, size/2, size*0.28, size*0.5, 0, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(size/2, size/2, size*0.5, size*0.28, 0, 0, Math.PI*2); ctx.stroke();
+    // fine grain texture
+    ctx.globalAlpha = 0.5;
+    for (let i = 0; i < 3200; i++) {
+      ctx.fillStyle = Math.random() > 0.5 ? '#1a0004' : '#ff6b56';
+      const x = Math.random() * size, y = Math.random() * size;
+      ctx.fillRect(x, y, 1.4, 1.4);
+    }
+    ctx.globalAlpha = 1;
+    return new THREE.CanvasTexture(c);
+  }
+
+  const canvasEl = document.getElementById('ballCanvas');
+  let width = canvasEl.parentElement.clientWidth, height = canvasEl.parentElement.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
+  camera.position.set(0, 0, 3.4);
+
+  const renderer = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: true, alpha: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const geo = new THREE.SphereGeometry(1, 64, 64);
+  const mat = new THREE.MeshStandardMaterial({ map: makeBasketballTexture(), roughness: 0.6, metalness: 0.04 });
+  const ball = new THREE.Mesh(geo, mat);
+  ball.rotation.x = 0.3;
+  scene.add(ball);
+
+  const key = new THREE.DirectionalLight(0xffffff, 1.4);
+  key.position.set(3, 4, 5);
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffa896, 0.6);
+  rim.position.set(-4, -2, -3);
+  scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xfff8f6, 0.55));
+
+  let targetX = 0, targetY = 0;
+  canvasEl.parentElement.addEventListener('pointermove', (e) => {
+    const rect = canvasEl.parentElement.getBoundingClientRect();
+    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  });
+
+  let raf;
+  function tick() {
+    raf = requestAnimationFrame(tick);
+    ball.rotation.y += 0.0055;
+    ball.rotation.x += (0.3 + targetY * 0.35 - ball.rotation.x) * 0.04;
+    ball.rotation.y += targetX * 0.002;
+    renderer.render(scene, camera);
+  }
+  tick();
+
+  function onResize() {
+    width = canvasEl.parentElement.clientWidth;
+    height = canvasEl.parentElement.clientHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }
+  window.addEventListener('resize', onResize);
+
+  // pause the render loop when off-screen to save battery
+  inView(canvasEl.parentElement, () => {
+    if (!raf) tick();
+    return () => { cancelAnimationFrame(raf); raf = null; };
+  });
+
+  // ---- smooth scroll for in-page links only (avoids racing the initial fragment jump) ----
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (targetId.length < 2) return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', targetId);
+    });
+  });
+
+  // ---- nav toggle for mobile ----
+  document.getElementById('navToggle').addEventListener('click', () => {
+    const links = document.querySelector('nav.links');
+    const isOpen = links.style.display === 'flex';
+    links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:18px;border-bottom:1px solid rgba(56,0,10,.08)';
+  });
+
+  // ---- scroll reveal, staggered within each section ----
+  const seen = new Set();
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    inView(el, () => {
+      if (seen.has(el)) return;
+      seen.add(el);
+      const group = Array.from(el.parentElement.querySelectorAll(':scope > [data-reveal]'));
+      const index = group.indexOf(el);
+      animate(el, { opacity: [0, 1], y: [24, 0] }, {
+        duration: 0.6,
+        delay: Math.min(index, 6) * 0.08,
+        easing: [0.22, 1, 0.36, 1]
+      });
+    }, { margin: "0px 0px -10% 0px" });
+  });
+
+  // ---- spring hover-lift on cards and CTAs ----
+  document.querySelectorAll('.program-card, .facility-card, .price-card, .team-card, .testi-card, .why-stat').forEach((el) => {
+    el.addEventListener('pointerenter', () => animate(el, { y: -6, scale: 1.015 }, { type: "spring", stiffness: 300, damping: 20 }));
+    el.addEventListener('pointerleave', () => animate(el, { y: 0, scale: 1 }, { type: "spring", stiffness: 300, damping: 22 }));
+  });
+  document.querySelectorAll('.btn').forEach((el) => {
+    el.addEventListener('pointerenter', () => animate(el, { scale: 1.04 }, { type: "spring", stiffness: 400, damping: 15 }));
+    el.addEventListener('pointerleave', () => animate(el, { scale: 1 }, { type: "spring", stiffness: 400, damping: 15 }));
+    el.addEventListener('pointerdown', () => animate(el, { scale: 0.96 }, { duration: 0.1 }));
+    el.addEventListener('pointerup', () => animate(el, { scale: 1.04 }, { type: "spring", stiffness: 400, damping: 15 }));
+  });
+
+  // ---- FAQ accordion ----
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+
+  // ---- demo trial-session form — client-side only, no external submission ----
+  document.getElementById('joinForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('successMsg').classList.add('show');
+    e.target.reset();
+  });
+</script>
+
+</body>
+</html>
