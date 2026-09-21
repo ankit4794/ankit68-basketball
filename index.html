@@ -20,7 +20,7 @@
     --ink:#2a0a0c;
     --muted:#7a5a58;
     --radius:20px;
-    --max:1180px;
+    --max:1200px;
     --shadow: 0 20px 50px -20px rgba(56,0,10,.35);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -42,132 +42,143 @@
     padding:14px 28px;border-radius:999px;font-weight:700;font-size:15px;
     border:1px solid transparent;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   }
-  .btn-primary{background:var(--red-500);color:#fff;box-shadow:0 12px 24px -10px rgba(205,28,24,.55)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 30px -10px rgba(205,28,24,.6)}
-  .btn-ghost{background:transparent;border-color:rgba(56,0,10,.18);color:var(--maroon-900)}
-  .btn-ghost:hover{background:rgba(56,0,10,.06)}
+  .btn-primary{background:var(--red-500);color:#fff;box-shadow:0 10px 20px -10px rgba(56,0,10,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(56,0,10,.55)}
+  .btn-light{background:#fff;color:var(--maroon-900)}
+  .btn-ghost-dark{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
+  .btn-ghost-dark:hover{background:rgba(255,255,255,.1)}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.1em;
     text-transform:uppercase;color:var(--red-700);
   }
+  .eyebrow.on-dark{color:var(--peach-300)}
   .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red-500)}
 
   header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,248,246,.85);backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(56,0,10,.08);
+    position:sticky;top:0;z-index:60;
+    background:rgba(56,0,10,.72);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;color:var(--maroon-900);letter-spacing:-0.02em}
-  .brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--red-700),var(--maroon-900));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
-  nav.links{display:flex;gap:30px;font-weight:600;font-size:15px}
-  nav.links a{opacity:.8;transition:opacity .2s}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;color:#fff;letter-spacing:-0.02em}
+  .brand .mark{width:34px;height:34px;border-radius:10px;background:var(--red-500);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
+  nav.links{display:flex;gap:28px;font-weight:600;font-size:14.5px}
+  nav.links a{opacity:.75;transition:opacity .2s;color:#fff}
   nav.links a:hover{opacity:1}
   .nav-actions{display:flex;align-items:center;gap:14px}
-  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--maroon-900)}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#fff}
 
-  .hero{position:relative;overflow:hidden;padding:90px 0 70px}
-  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
-  .hero h1{font-size:clamp(38px,5.2vw,66px);font-weight:800;line-height:1.02;color:var(--maroon-900);text-transform:uppercase}
-  .hero h1 em{font-style:normal;color:var(--red-500)}
-  .hero p.lead{margin-top:22px;font-size:18px;color:var(--muted);max-width:480px}
+  /* ================= HERO — full-bleed dark, ball as background element ================= */
+  .hero{position:relative;overflow:hidden;background:radial-gradient(120% 100% at 78% 20%, #5a0d13 0%, var(--maroon-900) 55%, #200005 100%);padding:70px 0 0;color:#fff}
+  .hero-inner{position:relative;max-width:var(--max);margin:0 auto;padding:60px 24px 0;min-height:560px}
+  .hero-ball-stage{position:absolute;top:-40px;right:-6%;width:min(640px,58vw);aspect-ratio:1/1;z-index:1;opacity:.92}
+  .hero-ball-stage canvas{width:100%!important;height:100%!important;touch-action:none}
+  .hero-copy{position:relative;z-index:2;max-width:640px}
+  .hero-copy h1{font-size:clamp(44px,7.4vw,92px);font-weight:900;line-height:0.94;text-transform:uppercase;letter-spacing:-0.02em}
+  .hero-copy h1 span{display:block}
+  .hero-copy h1 .accent{color:var(--red-500);-webkit-text-stroke:0px}
+  .hero-copy p{margin-top:24px;font-size:18px;color:rgba(255,255,255,.72);max-width:440px}
   .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
-  .hero-stats{display:flex;gap:36px;margin-top:46px}
-  .hero-stats div b{display:block;font-size:28px;font-weight:800;color:var(--maroon-900)}
-  .hero-stats div span{font-size:13px;color:var(--muted)}
-  .hero-visual{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
-  .hero-visual canvas{width:100%!important;height:100%!important;touch-action:none}
-  .hero-visual .glow{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle, rgba(205,28,24,.18), transparent 70%);filter:blur(10px);z-index:-1}
-  .hero-visual .badge{
-    position:absolute;bottom:6%;left:50%;transform:translateX(-50%);
-    background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
-    border-radius:999px;padding:10px 20px;display:flex;align-items:center;gap:10px;
-    box-shadow:0 10px 30px -10px rgba(56,0,10,.3);font-size:13px;font-weight:700;
-  }
-  .hero-visual .badge .dot2{width:8px;height:8px;border-radius:50%;background:var(--red-500);animation:pulse 1.6s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero-ticker{position:relative;z-index:2;margin-top:56px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(4,1fr)}
+  .hero-ticker div{padding:26px 8px 30px;border-left:1px solid rgba(255,255,255,.12)}
+  .hero-ticker div:first-child{border-left:none}
+  .hero-ticker b{display:block;font-size:30px;font-weight:800;color:var(--peach-300)}
+  .hero-ticker span{font-size:12.5px;color:rgba(255,255,255,.6)}
 
-  section{padding:90px 0}
+  section{padding:100px 0}
   .section-head{max-width:600px;margin-bottom:52px}
   .section-head h2{font-size:clamp(28px,3.4vw,42px);font-weight:800;margin-top:14px;color:var(--maroon-900);text-transform:uppercase}
   .section-head p{margin-top:14px;color:var(--muted);font-size:16px}
 
-  .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .program-card{
-    background:#fff;border-radius:var(--radius);padding:32px 28px;border:1px solid rgba(56,0,10,.06);
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .program-card .icon{width:52px;height:52px;border-radius:14px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--red-700);font-size:22px}
-  .program-card h3{font-size:19px;font-weight:700;margin-bottom:10px}
-  .program-card p{font-size:14.5px;color:var(--muted)}
+  /* ================= PROGRAMS — bento grid, one featured tile ================= */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:20px}
+  .bento-card{background:#fff;border-radius:var(--radius);border:1px solid rgba(56,0,10,.06);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .3s ease, box-shadow .3s ease}
+  .bento-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .bento-card .icon{font-size:24px;margin-bottom:auto}
+  .bento-card h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .bento-card p{font-size:13.5px;color:var(--muted)}
+  .bento-card.featured{grid-column:span 2;grid-row:span 2;background:linear-gradient(155deg,var(--red-700),var(--maroon-900));color:#fff;padding:34px}
+  .bento-card.featured .icon{font-size:34px}
+  .bento-card.featured h3{font-size:24px}
+  .bento-card.featured p{color:rgba(255,255,255,.75);font-size:14.5px;max-width:320px}
+  .bento-card.featured .btn{margin-top:16px}
+  .bento-card.wide{grid-column:span 2}
 
-  .process-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:step}
-  .process-track::before{content:"";position:absolute;top:26px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(to right,rgba(56,0,10,.18) 0 8px,transparent 8px 16px);z-index:0}
-  .process-step{position:relative;z-index:1;text-align:center;padding:0 6px}
-  .process-step .step-num{width:52px;height:52px;margin:0 auto 18px;border-radius:50%;background:var(--maroon-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;box-shadow:0 10px 22px -8px rgba(56,0,10,.5)}
-  .process-step h3{font-size:16px;font-weight:700;margin-bottom:8px}
-  .process-step p{font-size:13.5px;color:var(--muted)}
+  /* ================= PROCESS — vertical alternating timeline ================= */
+  .timeline{position:relative;max-width:820px;margin:0 auto}
+  .timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:repeating-linear-gradient(to bottom,rgba(56,0,10,.2) 0 8px,transparent 8px 16px);transform:translateX(-50%)}
+  .tl-row{position:relative;display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;margin-bottom:44px}
+  .tl-row .tl-dot{width:44px;height:44px;border-radius:50%;background:var(--maroon-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin:0 auto;z-index:1;box-shadow:0 8px 18px -6px rgba(56,0,10,.5)}
+  .tl-row .tl-card{background:#fff;border:1px solid rgba(56,0,10,.07);border-radius:16px;padding:20px 24px}
+  .tl-row .tl-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
+  .tl-row .tl-card p{font-size:13.5px;color:var(--muted)}
+  .tl-row.right .tl-card{grid-column:3}
+  .tl-row.left .tl-card{grid-column:1}
+  .tl-row.right .tl-spacer{grid-column:1}
+  .tl-row.left .tl-spacer{grid-column:3}
 
-  .facility-section{background:var(--bg-2)}
-  .facility-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .facility-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:center;border:1px solid rgba(56,0,10,.06)}
-  .facility-card .icon{width:46px;height:46px;margin:0 auto 14px;border-radius:12px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--red-700)}
-  .facility-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
-  .facility-card p{font-size:13px;color:var(--muted)}
+  /* ================= FACILITY — horizontal scroll-snap strip ================= */
+  .facility-section{background:var(--maroon-900);color:#fff}
+  .facility-section .section-head h2{color:#fff}
+  .facility-section .section-head p{color:rgba(255,255,255,.65)}
+  .scroll-strip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin:0 -24px;padding-left:24px;padding-right:24px}
+  .scroll-strip::-webkit-scrollbar{height:6px}
+  .scroll-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px}
+  .strip-card{flex:0 0 260px;scroll-snap-align:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px}
+  .strip-card .icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+  .strip-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
+  .strip-card p{font-size:13.5px;color:rgba(255,255,255,.65)}
 
-  .why{background:var(--maroon-900);color:#fff;border-radius:32px;margin:0 24px;padding:70px 50px}
-  .why .wrap{max-width:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .why h2{color:#fff;font-size:clamp(26px,3vw,38px);font-weight:800;text-transform:uppercase}
-  .why-list{display:grid;gap:22px;margin-top:28px}
-  .why-list li{display:flex;gap:14px;list-style:none;font-size:15px;color:rgba(255,255,255,.85)}
-  .why-list li b{color:#fff;display:block;font-size:15.5px;margin-bottom:2px}
-  .why-list .num{flex:none;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--peach-300)}
-  .why-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .why-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px}
-  .why-stat b{display:block;font-size:32px;font-weight:800;color:var(--peach-300)}
-  .why-stat span{font-size:13px;color:rgba(255,255,255,.7)}
+  /* ================= WHY US — full-width stat row ================= */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat-row div{text-align:center;padding:0 16px;border-left:1px solid rgba(56,0,10,.12)}
+  .stat-row div:first-child{border-left:none}
+  .stat-row b{display:block;font-size:44px;font-weight:800;color:var(--red-500)}
+  .stat-row span{font-size:13.5px;color:var(--muted)}
+  .why-banner{text-align:center;max-width:720px;margin:0 auto 56px}
 
-  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  .team-card{text-align:center}
-  .team-photo{aspect-ratio:1;border-radius:18px;background:linear-gradient(160deg,var(--peach-300),var(--red-700));margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:30px}
-  .team-card h3{font-size:16px;font-weight:700;margin-bottom:3px}
-  .team-card span{font-size:13px;color:var(--muted)}
+  /* ================= COACHES — overlapping stacked cards ================= */
+  .coach-strip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 0 20px;margin:0 -24px;padding-left:24px;padding-right:24px}
+  .coach-card{flex:0 0 220px;scroll-snap-align:start;text-align:center}
+  .coach-photo{aspect-ratio:1;border-radius:50%;background:linear-gradient(160deg,var(--peach-300),var(--red-700));margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:30px}
+  .coach-card h3{font-size:15.5px;font-weight:700;margin-bottom:3px}
+  .coach-card span{font-size:12.5px;color:var(--muted)}
 
-  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .price-card{background:#fff;border:1px solid rgba(56,0,10,.08);border-radius:var(--radius);padding:32px 28px;position:relative}
-  .price-card.featured{border-color:var(--red-500);box-shadow:var(--shadow)}
-  .price-card .tag{position:absolute;top:-13px;left:28px;background:var(--red-700);color:#fff;font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.03em}
-  .price-card h3{font-size:17px;font-weight:700;margin-bottom:6px}
-  .price-card .amount{font-size:32px;font-weight:800;color:var(--maroon-900);margin:10px 0}
-  .price-card .amount span{font-size:14px;color:var(--muted);font-weight:400}
-  .price-card ul{list-style:none;display:grid;gap:10px;margin-top:18px;font-size:14px;color:var(--muted)}
-  .price-card ul li::before{content:"✓ ";color:var(--red-700);font-weight:700}
+  /* ================= PRICING — comparison table ================= */
+  .compare{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .compare th,.compare td{padding:18px 20px;text-align:center;border-bottom:1px solid rgba(56,0,10,.08);font-size:14px}
+  .compare th{background:var(--bg-2);font-size:14px}
+  .compare td:first-child,.compare th:first-child{text-align:left;font-weight:600;color:var(--maroon-900)}
+  .compare thead th.plan{padding-top:22px}
+  .compare thead .plan-name{font-size:16px;font-weight:800;color:var(--maroon-900);display:block}
+  .compare thead .plan-price{font-size:22px;font-weight:800;color:var(--red-500);display:block;margin-top:4px}
+  .compare thead th.featured{background:var(--red-500);color:#fff}
+  .compare thead th.featured .plan-name,.compare thead th.featured .plan-price{color:#fff}
+  .compare td.yes{color:var(--red-700);font-weight:800}
+  .compare td.no{color:rgba(56,0,10,.25)}
+  .compare tbody tr:last-child td{border-bottom:none}
 
-  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .testi-card{background:var(--bg-2);border-radius:var(--radius);padding:30px}
-  .stars{color:#8a5f14;font-size:15px;margin-bottom:14px;letter-spacing:2px}
-  .testi-card p{font-size:15px;color:var(--ink);margin-bottom:20px}
-  .testi-person{display:flex;align-items:center;gap:12px}
-  .testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--red-700);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
-  .testi-person b{font-size:14px;display:block}
-  .testi-person span{font-size:12.5px;color:var(--muted)}
+  /* ================= TESTIMONIALS — single spotlight with switcher ================= */
+  .spotlight{max-width:760px;margin:0 auto;text-align:center}
+  .spotlight-quote{font-size:clamp(20px,2.6vw,28px);font-weight:500;line-height:1.4;color:var(--maroon-900);min-height:130px}
+  .spotlight-person{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .spotlight-avatar{width:52px;height:52px;border-radius:50%;background:var(--red-700);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+  .spotlight-dots{display:flex;gap:10px;justify-content:center;margin-top:26px}
+  .spotlight-dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(56,0,10,.2);cursor:pointer;padding:0;transition:background .2s}
+  .spotlight-dots button.active{background:var(--red-500)}
 
-  .faq-list{display:grid;gap:14px;max-width:760px;margin:0 auto}
-  .faq-item{background:#fff;border:1px solid rgba(56,0,10,.08);border-radius:16px;overflow:hidden}
-  .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;background:none;border:none;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--maroon-900);cursor:pointer}
-  .faq-q .plus{flex:none;font-size:20px;color:var(--red-500);transition:transform .3s ease}
+  /* ================= FAQ — two column ================= */
+  .faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+  .faq-item{background:#fff;border:1px solid rgba(56,0,10,.08);border-radius:16px;overflow:hidden;align-self:start}
+  .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;background:none;border:none;text-align:left;font:inherit;font-weight:700;font-size:14.5px;color:var(--maroon-900);cursor:pointer}
+  .faq-q .plus{flex:none;font-size:19px;color:var(--red-500);transition:transform .3s ease}
   .faq-item.open .faq-q .plus{transform:rotate(45deg)}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-  .faq-a p{padding:0 24px 20px;font-size:14.5px;color:var(--muted)}
+  .faq-a p{padding:0 22px 18px;font-size:13.5px;color:var(--muted)}
 
-  .join{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-  .join .info h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--maroon-900);text-transform:uppercase}
-  .join .info p{margin-top:16px;color:var(--muted)}
-  .info-row{display:flex;gap:14px;margin-top:22px;align-items:flex-start}
-  .info-row .icon{width:40px;height:40px;border-radius:10px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;color:var(--red-700);flex:none}
-  .info-row b{display:block;font-size:14.5px}
-  .info-row span{font-size:13.5px;color:var(--muted)}
-  form.card{background:#fff;border-radius:var(--radius);padding:34px;border:1px solid rgba(56,0,10,.08);box-shadow:var(--shadow)}
+  /* ================= JOIN — centered single column ================= */
+  .join{max-width:560px;margin:0 auto;text-align:center}
+  form.card{background:#fff;border-radius:var(--radius);padding:34px;border:1px solid rgba(56,0,10,.08);box-shadow:var(--shadow);text-align:left;margin-top:36px}
   .field{margin-bottom:16px}
   .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--maroon-900)}
   .field input,.field select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(56,0,10,.15);font:inherit;background:var(--bg);color:var(--ink)}
@@ -177,7 +188,7 @@
   .success-msg{display:none;margin-top:14px;background:#e8f6ee;color:#166534;padding:12px 14px;border-radius:10px;font-size:14px;font-weight:600}
   .success-msg.show{display:block}
 
-  footer{background:var(--maroon-900);color:rgba(255,255,255,.75);padding:60px 0 30px;margin-top:40px}
+  footer{background:var(--maroon-900);color:rgba(255,255,255,.75);padding:60px 0 30px;margin-top:0}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
   .footer-grid h4{color:#fff;font-size:14px;margin-bottom:16px}
   .footer-grid ul{list-style:none;display:grid;gap:10px;font-size:14px}
@@ -192,19 +203,25 @@
     .nav{padding:14px 18px}
     .brand{font-size:16px;white-space:nowrap}
     .nav-actions .btn-primary{padding:10px 16px;font-size:13.5px;white-space:nowrap}
-    .hero .wrap{grid-template-columns:1fr}
-    .hero-visual{order:-1;max-width:380px;margin:0 auto}
-    .programs-grid,.testi-grid{grid-template-columns:1fr}
-    .why .wrap{grid-template-columns:1fr}
-    .why{margin:0 12px;padding:44px 24px}
-    .join{grid-template-columns:1fr}
+    .hero-ball-stage{position:relative;top:0;right:0;width:70vw;margin:0 auto 20px}
+    .hero-inner{padding-top:20px}
+    .hero-ticker{grid-template-columns:1fr 1fr}
+    .hero-ticker div:nth-child(3){border-left:none}
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+    .bento-card.featured{grid-column:span 2;grid-row:span 1;padding:26px}
+    .bento-card.wide{grid-column:span 2}
+    .tl-row{grid-template-columns:1fr}
+    .timeline::before{left:22px}
+    .tl-row .tl-dot{position:absolute;left:0;margin:0;width:44px}
+    .tl-row .tl-card{grid-column:1!important;margin-left:64px}
+    .tl-row .tl-spacer{display:none}
+    .stat-row{grid-template-columns:1fr 1fr;gap:24px 0}
+    .stat-row div:nth-child(3){border-left:none}
+    .compare{font-size:13px}
+    .compare th,.compare td{padding:12px 8px}
+    .faq-cols{grid-template-columns:1fr}
     .footer-grid{grid-template-columns:1fr 1fr}
     .row-2{grid-template-columns:1fr}
-    .process-track{grid-template-columns:1fr;gap:28px}
-    .process-track::before{display:none}
-    .facility-grid{grid-template-columns:1fr 1fr}
-    .team-grid{grid-template-columns:1fr 1fr}
-    .pricing-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -229,25 +246,24 @@
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <div data-reveal>
-        <span class="eyebrow">Street Basketball Training</span>
-        <h1>Train like<br><em>it's game day</em></h1>
-        <p class="lead">ANKIT68° builds game-ready players through structured coaching, real repetition, and a facility built for people serious about getting better.</p>
+    <div class="hero-inner">
+      <div class="hero-ball-stage" data-reveal>
+        <canvas id="ballCanvas"></canvas>
+      </div>
+      <div class="hero-copy" data-reveal>
+        <span class="eyebrow on-dark">Street Basketball Training</span>
+        <h1><span>Train</span><span>like it's</span><span class="accent">game day.</span></h1>
+        <p>ANKIT68° builds game-ready players through structured coaching, real repetition, and a facility built for people serious about getting better.</p>
         <div class="hero-actions">
           <a href="#join" class="btn btn-primary">Book a trial session</a>
-          <a href="#programs" class="btn btn-ghost">See programs</a>
-        </div>
-        <div class="hero-stats">
-          <div><b>9+</b><span>Years coaching</span></div>
-          <div><b>1,200+</b><span>Athletes trained</span></div>
-          <div><b>4.9★</b><span>Parent &amp; player rating</span></div>
+          <a href="#programs" class="btn btn-ghost-dark">See programs</a>
         </div>
       </div>
-      <div class="hero-visual" data-reveal>
-        <div class="glow"></div>
-        <canvas id="ballCanvas"></canvas>
-        <div class="badge"><span class="dot2"></span>Next session in 2h 15m</div>
+      <div class="hero-ticker" data-reveal>
+        <div><b>9+</b><span>Years coaching</span></div>
+        <div><b>1,200+</b><span>Athletes trained</span></div>
+        <div><b>4.9★</b><span>Parent &amp; player rating</span></div>
+        <div><b>12</b><span>Alumni playing college ball</span></div>
       </div>
     </div>
   </section>
@@ -259,30 +275,55 @@
         <h2>Programs for every level</h2>
         <p>Every group is small enough that a coach actually knows your name, and your weaknesses.</p>
       </div>
-      <div class="programs-grid">
-        <div class="program-card" data-reveal><div class="icon">🏀</div><h3>Youth Development</h3><p>Fundamentals-first training for ages 8-13, building habits that stick.</p></div>
-        <div class="program-card" data-reveal><div class="icon">🔥</div><h3>Elite Training</h3><p>High-intensity sessions for competitive players prepping for tryouts.</p></div>
-        <div class="program-card" data-reveal><div class="icon">🎯</div><h3>Shooting Clinic</h3><p>Form correction and volume reps with real-time video feedback.</p></div>
-        <div class="program-card" data-reveal><div class="icon">💪</div><h3>Strength &amp; Conditioning</h3><p>On-court speed and power work built specifically for basketball movement.</p></div>
-        <div class="program-card" data-reveal><div class="icon">🧑‍🏫</div><h3>1-on-1 Coaching</h3><p>Private sessions built entirely around your game and your goals.</p></div>
-        <div class="program-card" data-reveal><div class="icon">☀️</div><h3>Summer Camps</h3><p>Full-day camps mixing skills, scrimmages, and team competition.</p></div>
+      <div class="bento">
+        <div class="bento-card featured" data-reveal>
+          <div class="icon">🔥</div>
+          <h3>Elite Training</h3>
+          <p>High-intensity sessions for competitive players prepping for tryouts — video-reviewed, position-specific, built around a real season calendar.</p>
+          <a href="#join" class="btn btn-light">Apply now</a>
+        </div>
+        <div class="bento-card" data-reveal><div class="icon">🏀</div><h3>Youth Development</h3><p>Fundamentals for ages 8-13.</p></div>
+        <div class="bento-card" data-reveal><div class="icon">🎯</div><h3>Shooting Clinic</h3><p>Form correction, high-volume reps.</p></div>
+        <div class="bento-card wide" data-reveal><div class="icon">💪</div><h3>Strength &amp; Conditioning</h3><p>On-court speed and power work built specifically for basketball movement patterns.</p></div>
+        <div class="bento-card" data-reveal><div class="icon">🧑‍🏫</div><h3>1-on-1 Coaching</h3><p>Private sessions, your goals.</p></div>
+        <div class="bento-card" data-reveal><div class="icon">☀️</div><h3>Summer Camps</h3><p>Full-day skills and scrimmages.</p></div>
       </div>
     </div>
   </section>
 
   <section id="process">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center">
         <span class="eyebrow">How it works</span>
         <h2>From first rep to game ready</h2>
         <p>A clear path, not a random mix of drills — every athlete moves through the same five stages.</p>
       </div>
-      <div class="process-track">
-        <div class="process-step" data-reveal><div class="step-num">01</div><h3>Assess</h3><p>A skills evaluation to find your real starting point.</p></div>
-        <div class="process-step" data-reveal><div class="step-num">02</div><h3>Plan</h3><p>A training plan built around your position and goals.</p></div>
-        <div class="process-step" data-reveal><div class="step-num">03</div><h3>Train</h3><p>Structured sessions, tracked reps, real coaching cues.</p></div>
-        <div class="process-step" data-reveal><div class="step-num">04</div><h3>Track</h3><p>Progress checkpoints every 4 weeks, shared with parents.</p></div>
-        <div class="process-step" data-reveal><div class="step-num">05</div><h3>Compete</h3><p>Scrimmages and showcase games to prove it under pressure.</p></div>
+      <div class="timeline">
+        <div class="tl-row left" data-reveal>
+          <div class="tl-card"><h3>01 — Assess</h3><p>A skills evaluation to find your real starting point.</p></div>
+          <div class="tl-dot">01</div>
+          <div class="tl-spacer"></div>
+        </div>
+        <div class="tl-row right" data-reveal>
+          <div class="tl-spacer"></div>
+          <div class="tl-dot">02</div>
+          <div class="tl-card"><h3>02 — Plan</h3><p>A training plan built around your position and goals.</p></div>
+        </div>
+        <div class="tl-row left" data-reveal>
+          <div class="tl-card"><h3>03 — Train</h3><p>Structured sessions, tracked reps, real coaching cues.</p></div>
+          <div class="tl-dot">03</div>
+          <div class="tl-spacer"></div>
+        </div>
+        <div class="tl-row right" data-reveal>
+          <div class="tl-spacer"></div>
+          <div class="tl-dot">04</div>
+          <div class="tl-card"><h3>04 — Track</h3><p>Progress checkpoints every 4 weeks, shared with parents.</p></div>
+        </div>
+        <div class="tl-row left" data-reveal>
+          <div class="tl-card"><h3>05 — Compete</h3><p>Scrimmages and showcase games to prove it under pressure.</p></div>
+          <div class="tl-dot">05</div>
+          <div class="tl-spacer"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -290,39 +331,32 @@
   <section id="facility" class="facility-section">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <span class="eyebrow">Where you train</span>
+        <span class="eyebrow on-dark">Where you train</span>
         <h2>A facility built for reps</h2>
         <p>No waiting for a hoop, no cutting sessions short because the gym's booked.</p>
       </div>
-      <div class="facility-grid">
-        <div class="facility-card" data-reveal><div class="icon">🏟️</div><h3>Full Court</h3><p>Regulation hardwood, open for every session.</p></div>
-        <div class="facility-card" data-reveal><div class="icon">🎥</div><h3>Video Analysis</h3><p>Every drill recorded for form breakdown afterward.</p></div>
-        <div class="facility-card" data-reveal><div class="icon">🤖</div><h3>Shooting Machine</h3><p>Rapid-return passing for high-volume shooting reps.</p></div>
-        <div class="facility-card" data-reveal><div class="icon">🧊</div><h3>Recovery Room</h3><p>Stretching and recovery space built into every session.</p></div>
+      <div class="scroll-strip" data-reveal>
+        <div class="strip-card"><div class="icon">🏟️</div><h3>Full Court</h3><p>Regulation hardwood, open for every session.</p></div>
+        <div class="strip-card"><div class="icon">🎥</div><h3>Video Analysis</h3><p>Every drill recorded for form breakdown afterward.</p></div>
+        <div class="strip-card"><div class="icon">🤖</div><h3>Shooting Machine</h3><p>Rapid-return passing for high-volume shooting reps.</p></div>
+        <div class="strip-card"><div class="icon">🧊</div><h3>Recovery Room</h3><p>Stretching and recovery space built into every session.</p></div>
+        <div class="strip-card"><div class="icon">🥤</div><h3>Fuel Bar</h3><p>Hydration and light nutrition between sessions.</p></div>
       </div>
     </div>
   </section>
 
   <section id="why-us">
     <div class="wrap">
-      <div class="why">
-        <div class="wrap">
-          <div data-reveal>
-            <span class="eyebrow" style="color:var(--peach-300)">Why families choose us</span>
-            <h2>Coaching that actually tracks progress</h2>
-            <ul class="why-list">
-              <li><span class="num">01</span><div><b>Small groups</b>Max 8 athletes per coach, every session.</div></li>
-              <li><span class="num">02</span><div><b>Real progress reports</b>Written checkpoints, not vague praise.</div></li>
-              <li><span class="num">03</span><div><b>Flexible scheduling</b>Weekday evenings and weekend blocks available.</div></li>
-            </ul>
-          </div>
-          <div class="why-stats" data-reveal>
-            <div class="why-stat"><b>96%</b><span>Would recommend us</span></div>
-            <div class="why-stat"><b>8:1</b><span>Athlete-to-coach ratio</span></div>
-            <div class="why-stat"><b>4</b><span>Sessions per week available</span></div>
-            <div class="why-stat"><b>12</b><span>Alumni playing college ball</span></div>
-          </div>
-        </div>
+      <div class="why-banner" data-reveal>
+        <span class="eyebrow" style="justify-content:center">Why families choose us</span>
+        <h2 style="margin-top:14px">Coaching that actually tracks progress</h2>
+        <p style="margin-top:14px;color:var(--muted)">Small groups, written checkpoints, flexible scheduling — no vague praise, just real numbers.</p>
+      </div>
+      <div class="stat-row" data-reveal>
+        <div><b>96%</b><span>Would recommend us</span></div>
+        <div><b>8:1</b><span>Athlete-to-coach ratio</span></div>
+        <div><b>4</b><span>Sessions per week available</span></div>
+        <div><b>12</b><span>Alumni playing college ball</span></div>
       </div>
     </div>
   </section>
@@ -333,64 +367,60 @@
         <span class="eyebrow">Meet the coaches</span>
         <h2>Coached by people who've played</h2>
       </div>
-      <div class="team-grid">
-        <div class="team-card" data-reveal><div class="team-photo">R</div><h3>Coach Rahul Verma</h3><span>Head Coach, Elite</span></div>
-        <div class="team-card" data-reveal><div class="team-photo">S</div><h3>Coach Simran Kaur</h3><span>Youth Development</span></div>
-        <div class="team-card" data-reveal><div class="team-photo">D</div><h3>Coach Dev Malhotra</h3><span>Shooting Specialist</span></div>
-        <div class="team-card" data-reveal><div class="team-photo">N</div><h3>Coach Neha Kapoor</h3><span>Strength &amp; Conditioning</span></div>
+      <div class="coach-strip" data-reveal>
+        <div class="coach-card"><div class="coach-photo">R</div><h3>Coach Rahul Verma</h3><span>Head Coach, Elite</span></div>
+        <div class="coach-card"><div class="coach-photo">S</div><h3>Coach Simran Kaur</h3><span>Youth Development</span></div>
+        <div class="coach-card"><div class="coach-photo">D</div><h3>Coach Dev Malhotra</h3><span>Shooting Specialist</span></div>
+        <div class="coach-card"><div class="coach-photo">N</div><h3>Coach Neha Kapoor</h3><span>Strength &amp; Conditioning</span></div>
       </div>
     </div>
   </section>
 
-  <section id="pricing" class="facility-section">
+  <section id="pricing">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center">
         <span class="eyebrow">Plans</span>
         <h2>Straightforward pricing</h2>
         <p>No hidden equipment fees — everything you need is on-site.</p>
       </div>
-      <div class="pricing-grid">
-        <div class="price-card" data-reveal>
-          <h3>Drop-In</h3>
-          <div class="amount">$35<span> / session</span></div>
-          <ul><li>Single group session</li><li>Access to open gym hours</li><li>No commitment required</li></ul>
-        </div>
-        <div class="price-card featured" data-reveal>
-          <span class="tag">Most popular</span>
-          <h3>Monthly Squad</h3>
-          <div class="amount">$219<span> / month</span></div>
-          <ul><li>3 sessions per week</li><li>Progress report every 4 weeks</li><li>Priority camp registration</li></ul>
-        </div>
-        <div class="price-card" data-reveal>
-          <h3>1-on-1 Private</h3>
-          <div class="amount">Custom<span> quote</span></div>
-          <ul><li>Fully personalized plan</li><li>Flexible scheduling</li><li>Video breakdown included</li></ul>
-        </div>
+      <div style="overflow-x:auto" data-reveal>
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="plan"><span class="plan-name">Drop-In</span><span class="plan-price">$35/session</span></th>
+              <th class="plan featured"><span class="plan-name">Monthly Squad</span><span class="plan-price">$219/mo</span></th>
+              <th class="plan"><span class="plan-name">1-on-1 Private</span><span class="plan-price">Custom</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Sessions per week</td><td>1</td><td>3</td><td>Flexible</td></tr>
+            <tr><td>Progress reports</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Open gym access</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Video breakdown</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>Priority camp registration</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
   <section id="testimonials">
     <div class="wrap">
-      <div class="section-head" data-reveal>
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center">
         <span class="eyebrow">Player stories</span>
         <h2>What athletes and parents say</h2>
       </div>
-      <div class="testi-grid">
-        <div class="testi-card" data-reveal>
-          <div class="stars">★★★★★</div>
-          <p>"My son's shooting form completely changed in six weeks. The video feedback made the difference."</p>
-          <div class="testi-person"><div class="testi-avatar">A</div><div><b>Anil Sharma</b><span>Parent</span></div></div>
+      <div class="spotlight" data-reveal>
+        <div class="spotlight-quote" id="quoteText">"My son's shooting form completely changed in six weeks. The video feedback made the difference."</div>
+        <div class="spotlight-person">
+          <div class="spotlight-avatar" id="quoteAvatar">A</div>
+          <div><b id="quoteName">Anil Sharma</b><div style="font-size:13px;color:var(--muted)" id="quoteRole">Parent</div></div>
         </div>
-        <div class="testi-card" data-reveal>
-          <div class="stars">★★★★★</div>
-          <p>"Small groups meant the coach actually corrected me instead of just running drills."</p>
-          <div class="testi-person"><div class="testi-avatar">P</div><div><b>Priya Nair</b><span>Elite program</span></div></div>
-        </div>
-        <div class="testi-card" data-reveal>
-          <div class="stars">★★★★★</div>
-          <p>"Made varsity this year. The summer camp scrimmages were exactly the pressure I needed."</p>
-          <div class="testi-person"><div class="testi-avatar">K</div><div><b>Karan Mehta</b><span>Youth program</span></div></div>
+        <div class="spotlight-dots" id="quoteDots">
+          <button class="active" data-i="0"></button>
+          <button data-i="1"></button>
+          <button data-i="2"></button>
         </div>
       </div>
     </div>
@@ -402,7 +432,7 @@
         <span class="eyebrow">Questions</span>
         <h2>Frequently asked</h2>
       </div>
-      <div class="faq-list">
+      <div class="faq-cols">
         <div class="faq-item" data-reveal>
           <button class="faq-q"><span>What age groups do you train?</span><span class="plus">+</span></button>
           <div class="faq-a"><p>Youth Development starts at age 8. Elite Training and 1-on-1 coaching are open to any age with prior playing experience.</p></div>
@@ -424,33 +454,30 @@
   </section>
 
   <section id="join">
-    <div class="wrap join">
-      <div class="info" data-reveal>
-        <span class="eyebrow">Get started</span>
-        <h2>Book your trial session</h2>
-        <p>Tell us a bit about the athlete and we'll follow up with available times. This is a demo form — no data leaves your browser.</p>
-        <div class="info-row"><div class="icon">📍</div><div><b>Train with us</b><span>456 Example Court, Your City (placeholder address)</span></div></div>
-        <div class="info-row"><div class="icon">📞</div><div><b>Call the front desk</b><span>+1 (555) 020-0000 (placeholder number)</span></div></div>
-        <div class="info-row"><div class="icon">✉️</div><div><b>Email us</b><span>hello@ankit68.example</span></div></div>
+    <div class="wrap">
+      <div class="join" data-reveal>
+        <span class="eyebrow" style="justify-content:center">Get started</span>
+        <h2 style="margin-top:14px;font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--maroon-900);text-transform:uppercase">Book your trial session</h2>
+        <p style="margin-top:14px;color:var(--muted)">Tell us a bit about the athlete and we'll follow up with available times. This is a demo form — no data leaves your browser.</p>
+        <form class="card" id="joinForm">
+          <div class="row-2">
+            <div class="field"><label>Athlete name</label><input type="text" required placeholder="Jordan Lee"></div>
+            <div class="field"><label>Age</label><input type="number" required min="6" max="99" placeholder="12"></div>
+          </div>
+          <div class="field"><label>Parent/guardian email</label><input type="email" required placeholder="you@example.com"></div>
+          <div class="field"><label>Interested program</label>
+            <select>
+              <option>Youth Development</option>
+              <option>Elite Training</option>
+              <option>Shooting Clinic</option>
+              <option>1-on-1 Coaching</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request trial session</button>
+          <p class="form-note">This form is a front-end demo — submissions are not sent anywhere.</p>
+          <div class="success-msg" id="successMsg">Thanks! This demo form doesn't send data anywhere, but on a live site we'd follow up within one business day with open times.</div>
+        </form>
       </div>
-      <form class="card" id="joinForm">
-        <div class="row-2">
-          <div class="field"><label>Athlete name</label><input type="text" required placeholder="Jordan Lee"></div>
-          <div class="field"><label>Age</label><input type="number" required min="6" max="99" placeholder="12"></div>
-        </div>
-        <div class="field"><label>Parent/guardian email</label><input type="email" required placeholder="you@example.com"></div>
-        <div class="field"><label>Interested program</label>
-          <select>
-            <option>Youth Development</option>
-            <option>Elite Training</option>
-            <option>Shooting Clinic</option>
-            <option>1-on-1 Coaching</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request trial session</button>
-        <p class="form-note">This form is a front-end demo — submissions are not sent anywhere.</p>
-        <div class="success-msg" id="successMsg">Thanks! This demo form doesn't send data anywhere, but on a live site we'd follow up within one business day with open times.</div>
-      </form>
     </div>
   </section>
 </main>
@@ -490,28 +517,22 @@
   function makeBasketballTexture() {
     const size = 1024;
     const c = document.createElement('canvas');
-    c.width = size; c.height = size / 2 === 0 ? size : size; c.height = size;
+    c.width = size; c.height = size;
     const ctx = c.getContext('2d');
     ctx.fillStyle = '#cd1c18';
     ctx.fillRect(0, 0, size, size);
-    // subtle radial shading for a leathery feel
     const grad = ctx.createRadialGradient(size*0.4, size*0.35, size*0.05, size*0.5, size*0.5, size*0.75);
     grad.addColorStop(0, 'rgba(255,168,150,0.25)');
     grad.addColorStop(1, 'rgba(56,0,10,0.25)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, size, size);
-    // seams
     ctx.strokeStyle = '#1a0004';
     ctx.lineWidth = size * 0.014;
     ctx.lineCap = 'round';
-    // vertical seam
     ctx.beginPath(); ctx.moveTo(size/2, 0); ctx.lineTo(size/2, size); ctx.stroke();
-    // horizontal seam
     ctx.beginPath(); ctx.moveTo(0, size/2); ctx.lineTo(size, size/2); ctx.stroke();
-    // two vertical arcs (curved panel seams)
     ctx.beginPath(); ctx.ellipse(size/2, size/2, size*0.28, size*0.5, 0, 0, Math.PI*2); ctx.stroke();
     ctx.beginPath(); ctx.ellipse(size/2, size/2, size*0.5, size*0.28, 0, 0, Math.PI*2); ctx.stroke();
-    // fine grain texture
     ctx.globalAlpha = 0.5;
     for (let i = 0; i < 3200; i++) {
       ctx.fillStyle = Math.random() > 0.5 ? '#1a0004' : '#ff6b56';
@@ -539,26 +560,25 @@
   ball.rotation.x = 0.3;
   scene.add(ball);
 
-  const key = new THREE.DirectionalLight(0xffffff, 1.4);
+  const key = new THREE.DirectionalLight(0xffffff, 1.5);
   key.position.set(3, 4, 5);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffa896, 0.6);
+  const rim = new THREE.DirectionalLight(0xffa896, 0.8);
   rim.position.set(-4, -2, -3);
   scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xfff8f6, 0.55));
+  scene.add(new THREE.AmbientLight(0xffe4dc, 0.35));
 
   let targetX = 0, targetY = 0;
-  canvasEl.parentElement.addEventListener('pointermove', (e) => {
-    const rect = canvasEl.parentElement.getBoundingClientRect();
-    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  window.addEventListener('pointermove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
   let raf;
   function tick() {
     raf = requestAnimationFrame(tick);
     ball.rotation.y += 0.0055;
-    ball.rotation.x += (0.3 + targetY * 0.35 - ball.rotation.x) * 0.04;
+    ball.rotation.x += (0.3 + targetY * 0.25 - ball.rotation.x) * 0.04;
     ball.rotation.y += targetX * 0.002;
     renderer.render(scene, camera);
   }
@@ -573,13 +593,12 @@
   }
   window.addEventListener('resize', onResize);
 
-  // pause the render loop when off-screen to save battery
   inView(canvasEl.parentElement, () => {
     if (!raf) tick();
     return () => { cancelAnimationFrame(raf); raf = null; };
   });
 
-  // ---- smooth scroll for in-page links only (avoids racing the initial fragment jump) ----
+  // ---- smooth scroll for in-page links only ----
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href');
@@ -596,7 +615,7 @@
   document.getElementById('navToggle').addEventListener('click', () => {
     const links = document.querySelector('nav.links');
     const isOpen = links.style.display === 'flex';
-    links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:18px;border-bottom:1px solid rgba(56,0,10,.08)';
+    links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--maroon-900);padding:20px 24px;gap:18px;border-bottom:1px solid rgba(255,255,255,.1)';
   });
 
   // ---- scroll reveal, staggered within each section ----
@@ -616,7 +635,7 @@
   });
 
   // ---- spring hover-lift on cards and CTAs ----
-  document.querySelectorAll('.program-card, .facility-card, .price-card, .team-card, .testi-card, .why-stat').forEach((el) => {
+  document.querySelectorAll('.bento-card, .strip-card, .coach-card, .why-stat').forEach((el) => {
     el.addEventListener('pointerenter', () => animate(el, { y: -6, scale: 1.015 }, { type: "spring", stiffness: 300, damping: 20 }));
     el.addEventListener('pointerleave', () => animate(el, { y: 0, scale: 1 }, { type: "spring", stiffness: 300, damping: 22 }));
   });
@@ -641,6 +660,29 @@
       });
       item.classList.toggle('open', !isOpen);
       a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+
+  // ---- testimonial spotlight switcher ----
+  const quotes = [
+    { text: '"My son\'s shooting form completely changed in six weeks. The video feedback made the difference."', name: 'Anil Sharma', role: 'Parent', initial: 'A' },
+    { text: '"Small groups meant the coach actually corrected me instead of just running drills."', name: 'Priya Nair', role: 'Elite program', initial: 'P' },
+    { text: '"Made varsity this year. The summer camp scrimmages were exactly the pressure I needed."', name: 'Karan Mehta', role: 'Youth program', initial: 'K' }
+  ];
+  const quoteText = document.getElementById('quoteText');
+  const quoteName = document.getElementById('quoteName');
+  const quoteRole = document.getElementById('quoteRole');
+  const quoteAvatar = document.getElementById('quoteAvatar');
+  document.querySelectorAll('#quoteDots button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const q = quotes[Number(btn.dataset.i)];
+      animate(quoteText, { opacity: [0, 1] }, { duration: 0.35 });
+      quoteText.textContent = q.text;
+      quoteName.textContent = q.name;
+      quoteRole.textContent = q.role;
+      quoteAvatar.textContent = q.initial;
+      document.querySelectorAll('#quoteDots button').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
     });
   });
 

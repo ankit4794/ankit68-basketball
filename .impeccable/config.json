@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "builds/ankit68-basketball/index.html"
+        ],
+        "createdAt": "2026-09-21T05:06:54.303Z",
+        "reason": "Claude: fixed the one real chromatic halo (btn-primary red glow -> neutral rgba(56,0,10) shadow); remaining box-shadows are all offset+blurred elevation shadows tinted toward the dark brand maroon on light-background cards, not zero-offset colored halos on dark bg"
+      }
+    ]
+  }
+}
